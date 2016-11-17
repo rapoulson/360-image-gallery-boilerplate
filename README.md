@@ -1,4 +1,6 @@
-# 360-image-gallery-boilerplate
+A 360 annotated image exploration of the history of "The Rock" at Northwestern University.
+
+We forked [360-image-gallery-boilerplate](https://github.com/aframevr/360-image-gallery-boilerplate) to get started.
 
 > Featured in the *Building an Advanced Scene* guide.
 
