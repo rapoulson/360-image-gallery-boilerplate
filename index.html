@@ -19,12 +19,17 @@
         <img id="rock-main" crossorigin="anonymous" src="assets/rock.jpeg">
         <img id="fifties" crossorigin="anonymous" src="assets/students-rock-50s.jpg">
         <img id="retro-painting" crossorigin="anonymous" src="assets/retro-painting.jpg">
-        <img id="protest-rock" crossorigin="anonymous" src="assets/protest-rock.jpg">
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <img id="protest-1" crossorigin="anonymous" src="assets/protest-1.png">
+        <img id="protest-2" crossorigin="anonymous" src="assets/protest-2.jpg">
+        <img id="protest-3" crossorigin="anonymous" src="assets/protest-3.png">
+        <img id="protest-4" crossorigin="anonymous" src="assets/protest-4.jpg">
+        <img id="guard-rock" crossorigin="anonymous" src="assets/guard-rock.jpg">
+        <img id="1902-gift" crossorigin="anonymous" src="assets/1902-gift.jpg">
 
         <!-- Image link template to be reused. -->
         <script id="link" type="text/nunjucks">
-          <a-plane class="link" height="1" width="1"
+          <a-plane class="link" height="1" width="1" 
             material="shader: flat; src: {{ thumb }}"
             event-set__1="_event: mousedown; scale: 1 1 1"
             event-set__2="_event: mouseup; scale: 1.2 1.2 1"
@@ -46,7 +51,11 @@
       <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
         <a-entity template="src: #link" data-src="#fifties" data-thumb="#fifties"></a-entity>
         <a-entity template="src: #link" data-src="#retro-painting" data-thumb="#retro-painting"></a-entity>
-        <a-entity template="src: #link" data-src="#protest-rock" data-thumb="#protest-rock"></a-entity>
+        <a-entity template="src: #link" data-src="#fifties" data-thumb="#fifties"></a-entity>
+        <a-entity template="src: #link" data-src="#protest-1" data-thumb="#protest-1" rotation="-4.58 14.32 -2.29" scale="1.00 1.00 1.00" position="1.30 3.92 -1.73"></a-entity>
+        <a-entity template="src: #link" data-src="#protest-2" data-thumb="#protest-2"></a-entity>
+        <a-entity template="src: #link" data-src="#protest-3" data-thumb="#protest-3"></a-entity>
+        <a-entity template="src: #link" data-src="#protest-4" data-thumb="#protest-4"></a-entity>
       </a-entity>
 
       <!-- Camera + cursor. -->
