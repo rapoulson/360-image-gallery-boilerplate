@@ -15,11 +15,19 @@
   </head>
   <body>
     <a-scene>
+
       <a-assets>
         <img id="rock-main" crossorigin="anonymous" src="assets/rock.jpeg">
         <img id="fifties" crossorigin="anonymous" src="assets/students-rock-50s.jpg">
         <img id="retro-painting" crossorigin="anonymous" src="assets/retro-painting.jpg">
         <img id="protest-rock" crossorigin="anonymous" src="assets/protest-rock.jpg">
+        <img id="EngagementRock" crossorigin="anonymous" src="assets/EngagementRock.jpg">
+        <img id="EngagementPicture" position="-7 4 -0.9" crossorigin="anonymous" src="assets/EngagementPicture.jpg">
+        <img id="Family" crossorigin="anonymous" src="assets/Family.jpg">
+        <video id="rocktalk" src="assets/rocktalk.mp4">
+        <video id="Katie" src="assets/Katie.mp4">
+        <video id="Holly" src="assets/Holly.mp4">
+
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
 
         <!-- Image link template to be reused. -->
@@ -34,8 +42,34 @@
             sound="on: click; src: #click-sound"
             update-raycaster="#cursor"></a-plane>
         </script>
-      </a-assets>
 
+         <script id="ink" type="text/nunjucks">
+          <a-plane class="ink" height="1" width="1"
+            material="shader: flat; src: {{ thumb }}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #pop-up; src: {{ src }}"
+            sound="on: click; src: #click-sound"
+            update-raycaster="#cursor"></a-plane>
+        </script>
+
+        <script id="rocktalk" type="text/nunjucks">
+          <a-plane class="rocktalk" height="1" width="1"
+            material="shader: flat; src: {{ thumb }}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #pop-up; src: {{ src }}"
+            sound="on: click; src: #click-sound"
+            update-raycaster="#cursor"></a-plane>
+        </script>
+      </a-assets>
+        <a-video src="#rocktalk" width="16" height="9" position="1.7 2.73 -4" scale="0.2 0.2 0.5"></a-video>
+        <a-video src="#Katie" width="16" height="9" position="2 4 4" rotation="-20.65 5.73 6.88" scale="0.2 0.2 0.5"></a-video>
+        <a-video src="#Holly" width="16" height="9" position="-5.7 4 -4" rotation="-1.15 34.95 -0.57" scale="0.2 0.2 0.5"></a-video>
       <!-- 360-degree image. -->
       <a-sky id="image-360" radius="10" src="#rock-main"></a-sky>
 
@@ -49,6 +83,12 @@
         <a-entity template="src: #link" data-src="#protest-rock" data-thumb="#protest-rock"></a-entity>
       </a-entity>
 
+       <a-entity id="inks" layout="type: line; margin: 1.25" position="4.96 2.67 -3.11" rotation="0 -56.15 1.72" scale="2.3 2.7 2.5">
+        <a-entity template="src: #ink" data-src="#EngagementRock" data-thumb="#EngagementRock"></a-entity>
+        <a-entity template="src:#ink" data-src="#EngagementPicture" data-thumb="#EngagementPicture"></a-entity>
+        <a-entity template="src:#ink" data-src="#Family" data-thumb="#Family"></a-entity>
+      </a-entity>
+
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>
         <a-cursor id="cursor"
@@ -57,7 +97,18 @@
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: black"
           raycaster="objects: .link"></a-cursor>
+
+          <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          raycaster="objects: .ink"></a-cursor>
+      </a-entity>
       </a-entity>
     </a-scene>
+
+  
   </body>
 </html>
