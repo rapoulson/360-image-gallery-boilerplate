@@ -26,7 +26,6 @@ AFRAME.registerComponent('set-image', {
       setTimeout(function () {
         // Set image.
         data.target.setAttribute('material', 'opacity', 1);
-        
         data.target.setAttribute('material', 'src', data.src);
       }, data.dur);
 
