@@ -9,7 +9,8 @@ AFRAME.registerComponent('set-image', {
     on: {type: 'string'},
     target: {type: 'selector'},
     src: {type: 'string'},
-    dur: {type: 'number', default: 300}
+    dur: {type: 'number', default: 300},
+    opacity: {type: 'number'}
   },
 
   init: function () {
@@ -24,8 +25,11 @@ AFRAME.registerComponent('set-image', {
       // Wait for fade to complete.
       setTimeout(function () {
         // Set image.
+        data.target.setAttribute('material', 'opacity', 1);
+        
         data.target.setAttribute('material', 'src', data.src);
       }, data.dur);
+
     });
   },
 
@@ -41,13 +45,7 @@ AFRAME.registerComponent('set-image', {
     targetEl.dataset.setImageFadeSetup = true;
 
     // Create animation.
-    targetEl.setAttribute('animation__fade', {
-      property: 'material.color',
-      startEvents: 'set-image-fade',
-      dir: 'alternate',
-      dur: data.dur,
-      from: '#FFF',
-      to: '#000'
+    targetEl.setAttribute(opacity: '0');
     });
   }
-});
+}); 

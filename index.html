@@ -21,6 +21,9 @@
         <img id="retro-painting" crossorigin="anonymous" src="assets/retro-painting.jpg">
         <img id="protest-rock" crossorigin="anonymous" src="assets/protest-rock.jpg">
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <audio id="proposal" crossorigin="anonymous" src="assets/proposal-revised.mp3"></audio>
+        <video id="katie-rock-talk" crossorigin="anonymous" src="assets/Katie_Rock_Talk.mp4">
+
 
         <!-- Image link template to be reused. -->
         <script id="link" type="text/nunjucks">
@@ -34,16 +37,43 @@
             sound="on: click; src: #click-sound"
             update-raycaster="#cursor"></a-plane>
         </script>
+
+        <!-- video link template -->
+        <script id="vid_link" type="text/nunjucks">
+          <a-plane class="link" height="1" width="1"
+            material="shader: flat; src: {{ thumb }}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #video; src: {{ src }}"
+            sound="on: click; src: #proposal"
+            update-raycaster="#cursor"></a-plane>
+        </script>
       </a-assets>
 
       <!-- 360-degree image. -->
       <a-sky id="image-360" radius="10" src="#rock-main"></a-sky>
 
+      <!-- Making transparent boxes to put on top of ourselves -->  
+      <a-entity id="vid-links">    
+        <a-box id="jordan-box" data-src="#protest-rock" opacity="0" template="src: #vid_link"  position="5.55 1.04 -8.26" depth="2" height="4" width="0.5">
+          <a-animation attribute="opacity" begin="click" repeat="indefinite" to="0"></a-animation>
+
+      </a-box>
+        <a-box id="holly-box" template="src: #vid_link" transparent="true" opacity="0" position="-7.89 -0.72 -5.22" depth="1" height="6" width="1"></a-box>
+        <a-box id="rebecca-box" template="src: #vid_link" transparent="true" opacity="0" position="-6.17 -0.95 7.45" depth="1" height="6" width="1.5"></a-box>
+        <a-box id="katie-box" template="src: #vid_link" transparent="true" opacity="0" position="3.93 -1.79 9.15" depth="2" height="4" width="1"></a-box>
+      </a-entity>
+
+      <!-- pop-up videos -->
+      <a-curvedimage id="video" opacity="0" src="#protest-rock" height="3.0" radius="5.7" theta-length="72" position="0 0 0"></a-curvedimage>
+
       <!--- pop-up image -->
-      <a-curvedimage id="pop-up" src="#fifties" height="3.0" radius="5.7" theta-length="72" position="0 0 0"></a-curvedimage>
+      <a-curvedimage id="pop-up" src="#fifties" height="3.0" radius="5.7" theta-length="72" position="0 3.18 -1.01" rotation="0 150 0"></a-curvedimage>
 
       <!-- Image links. -->
-      <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+      <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4" opacity='0'>
         <a-entity template="src: #link" data-src="#fifties" data-thumb="#fifties"></a-entity>
         <a-entity template="src: #link" data-src="#retro-painting" data-thumb="#retro-painting"></a-entity>
         <a-entity template="src: #link" data-src="#protest-rock" data-thumb="#protest-rock"></a-entity>
@@ -52,7 +82,7 @@
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>
         <a-cursor id="cursor"
-          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150;"
           animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: black"
